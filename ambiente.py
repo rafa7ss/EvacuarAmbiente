@@ -51,8 +51,14 @@ def preencherAmbientePessoas():
 		imprimirMatriz()
 	return mAmbiente, arrPessoas
 
-def escolherPorta():
-	return random.choice(arrPortas)
+def alterarAmbiente(arrPosAntiga, arrPosAtual):
+	if mAmbiente[arrPosAtual[0],arrPosAtual[1]] not in ['[P]','[*]']:
+		mAmbiente[arrPosAntiga[0],arrPosAntiga[1]] = '[ ]'
+		imprimirMatriz()
+		return arrPosAtual
+	else:
+		time.sleep(random.randint(0.1,3))
+		return arrPosAntiga
 
 def imprimirMatriz():
 	time.sleep(0.2)
@@ -61,3 +67,6 @@ def imprimirMatriz():
 	    for v in l:
 	        print(" "+v+" ", end="")
 	    print()
+
+def escolherPorta():
+	return random.choice(arrPortas)

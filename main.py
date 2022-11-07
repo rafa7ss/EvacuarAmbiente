@@ -1,7 +1,7 @@
 import os
 import time
 import threading
-import keyboard
+# import keyboard
 
 import ambiente as amb
 import pessoa as p
@@ -25,14 +25,20 @@ amb.mAmbiente, amb.arrPortas = amb.preencherAmbientePortas()
 
 amb.mAmbiente, amb.arrPessoas = amb.preencherAmbientePessoas()
 
+print(mAmbiente)
+print(amb.len(mAmbiente)-1)
+
 # p.criarPessoa([])
 
 for arrPessoa in amb.arrPessoas:
 	print(arrPessoa)
-	thread = threading.Thread(target=p.criarPessoa, args=(arrPessoa,), daemon=False)
+	thread = threading.Thread(target=p.criarPessoa, args=(arrPessoa,), daemon=True)
 	thread.start()
 
-while(not keyboard.read_key() == 'enter'):
-	time.sleep(0.1)
+# while(not keyboard.read_key() == 'enter'):
+	# time.sleep(0.1)
 
-p.timer = False
+while(True):
+	time.sleep(3.1)
+
+# p.timer = False
