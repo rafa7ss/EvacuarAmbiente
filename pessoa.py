@@ -14,27 +14,47 @@ def controlarPessoa(p):
 def andarPessoaAleatoriamente(p):
 	while(timer):
 		if p[1][0] > 0:
-			arrPosAntiga = p[1]
-			p[1][0] = p[1][0]-1
-			p[1] = alterarAmbiente(arrPosAntiga, p[1])
+			PosAntiga = p[1]
+			PosAtual = [p[1][0]-1,p[1][1]]
+			p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
 		if p[1][1] > 0:
-			arrPosAntiga = p[1]
-			p[1][1] = p[1][1]-1
-			p[1] = alterarAmbiente(arrPosAntiga, p[1])
-		if p[1][0] < amb.len(mAmbiente)-1:
-			arrPosAntiga = p[1]
-			p[1][0] = p[1][0]+1
-			p[1] = alterarAmbiente(arrPosAntiga, p[1])
-		if p[1][1] < amb.len(mAmbiente[0])-1:
-			arrPosAntiga = p[1]
-			p[1][1] = p[1][1]+1
-			p[1] = alterarAmbiente(arrPosAntiga, p[1])
-		print("Pessoa {}, posicao é {}".format(p[0],p[1]))
-		time.sleep(2.1)
+			PosAntiga = p[1]
+			PosAtual = [p[1][0],p[1][1]-1]
+			p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+		if p[1][0] < len(amb.mAmbiente)-1:
+			PosAntiga = p[1]
+			PosAtual = [p[1][0]+1,p[1][1]]
+			p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+		if p[1][1] < len(amb.mAmbiente[0])-1:	
+			PosAntiga = p[1]
+			PosAtual = [p[1][0],p[1][1]+1]
+			p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+		time.sleep(0.1)
 	andarPessoaPorta(p)
 
 def andarPessoaPorta(p):
-	portaPessoa = p[1]
-	# igualar o x da pessoa ao da porta
-	# igualar o y da pessoa ao da porta
+	PosAtual = p[1]
+	portaPessoa = p[2]
+	while(p[1] != p[2]):
+		# igualar o x da pessoa ao da porta
+		if p[1][0] != p[2][0]:
+			if p[1][0] > p[2][0]
+				PosAntiga = p[1]
+				PosAtual = [p[1][0]-1,p[1][1]]
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+			else:
+				PosAntiga = p[1]
+				PosAtual = [p[1][0]+1,p[1][1]]
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+		# igualar o y da pessoa ao da porta
+		else:
+			if p[1][1] > p[2][1]
+				PosAntiga = p[1]
+				PosAtual = [p[1][0],p[1][1]-1]
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+			else:
+				PosAntiga = p[1]
+				PosAtual = [p[1][0],p[1][1]+1]
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+	
 	print('andou porta, %s' % (p[0]))

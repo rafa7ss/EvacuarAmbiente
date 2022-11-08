@@ -3,7 +3,11 @@ import os
 import random
 import threading
 
-global mAmbiente, larguraAmbiente, comprimentoAmbiente, nPessoas, nPortas, arrPortas, arrPessoas
+import pessoa as p
+
+# global mAmbiente, larguraAmbiente, comprimentoAmbiente, nPessoas, nPortas, arrPortas, arrPessoas, timerAmb
+global timer
+timer = False
 
 mAmbiente = False
 larguraAmbiente = False
@@ -32,6 +36,7 @@ def preencherAmbientePortas():
 				mAmbiente[x][y] = "[P]"
 				arrPortas.append([x,y])
 
+		time.sleep(0.3)
 		imprimirMatriz()
 	return mAmbiente, arrPortas
 
@@ -48,25 +53,33 @@ def preencherAmbientePessoas():
 					mAmbiente[x][y] = "[*]"
 					arrPessoas.append([i, [x,y], escolherPorta()])
 
+		time.sleep(0.3)
 		imprimirMatriz()
+
 	return mAmbiente, arrPessoas
 
 def alterarAmbiente(arrPosAntiga, arrPosAtual):
-	if mAmbiente[arrPosAtual[0],arrPosAtual[1]] not in ['[P]','[*]']:
-		mAmbiente[arrPosAntiga[0],arrPosAntiga[1]] = '[ ]'
+	if mAmbiente[arrPosAtual[0]][arrPosAtual[1]] not in ['[P]','[*]']:
+		mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+		mAmbiente[arrPosAtual[0]][arrPosAtual[1]] = '[*]'
 		imprimirMatriz()
+		time.sleep(random.randint(1,2))
 		return arrPosAtual
 	else:
-		time.sleep(random.randint(0.1,3))
+		time.sleep(random.randint(1,2))
 		return arrPosAntiga
 
 def imprimirMatriz():
-	time.sleep(0.2)
+	global timer
+	while(timer):
+		time.sleep(0.5)
+	timer = True
 	os.system('cls') or None
-	for l in mAmbiente:
+	for l in mAmbiente:	
 	    for v in l:
 	        print(" "+v+" ", end="")
 	    print()
+	timer = False
 
 def escolherPorta():
 	return random.choice(arrPortas)
