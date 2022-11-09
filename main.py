@@ -6,19 +6,19 @@ import threading
 import ambiente as amb
 import pessoa as p
 
-# print("Digite a largura do ambiente:")
-# amb.larguraAmbiente = int(input())
-# print("Digite o comprimento do ambiente:")
-# amb.comprimentoAmbiente = int(input())
-# print("Digite o número de portas:")
-# amb.nPortas = int(input())
-# print("Digite o número de pessoas:")
-# amb.nPessoas = int(input())
+print("Digite a largura do ambiente:")
+amb.larguraAmbiente = int(input())
+print("Digite o comprimento do ambiente:")
+amb.comprimentoAmbiente = int(input())
+print("Digite o número de portas:")
+amb.nPortas = int(input())
+print("Digite o número de pessoas:")
+amb.nPessoas = int(input())
 
-amb.larguraAmbiente = 10
-amb.comprimentoAmbiente = 10
-amb.nPortas = 1
-amb.nPessoas = 15
+# amb.larguraAmbiente = 10
+# amb.comprimentoAmbiente = 10
+# amb.nPortas = 1
+# amb.nPessoas = 15
 
 amb.mAmbiente = amb.preencherAmbiente()
 
@@ -35,7 +35,7 @@ for arrPessoa in amb.arrPessoas:
 # while(not keyboard.read_key() == 'enter'):
 	# time.sleep(0.1)
 
-time.sleep(1)
+time.sleep(7)
 
 p.timer = False
 

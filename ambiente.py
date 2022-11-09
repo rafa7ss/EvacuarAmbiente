@@ -104,34 +104,12 @@ def alterarAmbiente(arrPosAntiga, arrPosAtual, arrPortaPessoa = False):
 				mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
 				imprimirMatriz()
 				andou = True
-			# elif ranInt == 1 and arrPosAntiga[0]-2 >= 0 and mAmbiente[arrPosAntiga[0]-2][arrPosAntiga[1]] not in ['[*]', '[P]']:
-			# 	arrNovaPosAtual = [arrPosAntiga[0]-2,arrPosAntiga[1]]
-			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
-			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
-			# 	imprimirMatriz()
-			# 	andou = True
-			# elif ranInt == 2 and arrPosAntiga[1]-2 >= 0 and mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]-2] not in ['[*]', '[P]']:
-			# 	arrNovaPosAtual = [arrPosAntiga[0],arrPosAntiga[1]-2]
-			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
-			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
-			# 	imprimirMatriz()
-			# 	andou = True
-			# elif ranInt == 3 and arrPosAntiga[0]+2 <= len(mAmbiente[0])-1 and mAmbiente[arrPosAntiga[0]+2][arrPosAntiga[1]] not in ['[*]', '[P]']:
-			# 	arrNovaPosAtual = [arrPosAntiga[0]+2,arrPosAntiga[1]]
-			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
-			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
-			# 	imprimirMatriz()
-			# 	andou = True
-			# elif ranInt == 4 and arrPosAntiga[1]+2 <= len(mAmbiente[0][0])-1 and mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]+2] not in ['[*]', '[P]']:
-			# 	arrNovaPosAtual = [arrPosAntiga[0],arrPosAntiga[1]+2]
-			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
-			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
-			# 	imprimirMatriz()
-			# 	andou = True
 		return arrNovaPosAtual
 	else:
 		mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
 		imprimirMatriz()
+		while(mAmbiente[arrPosAtual[0]][arrPosAtual[1]] == '[*]'):
+			time.sleep(1)
 		return arrPortaPessoa
 
 def imprimirMatriz():
