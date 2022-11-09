@@ -58,16 +58,81 @@ def preencherAmbientePessoas():
 
 	return mAmbiente, arrPessoas
 
-def alterarAmbiente(arrPosAntiga, arrPosAtual):
-	if mAmbiente[arrPosAtual[0]][arrPosAtual[1]] not in ['[P]','[*]']:
+def alterarAmbiente(arrPosAntiga, arrPosAtual, arrPortaPessoa = False):
+	if not arrPortaPessoa:
+		if mAmbiente[arrPosAtual[0]][arrPosAtual[1]] not in ['[P]','[*]']:
+			mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+			mAmbiente[arrPosAtual[0]][arrPosAtual[1]] = '[*]'
+			imprimirMatriz()
+			time.sleep(random.randint(1,2))
+			return arrPosAtual
+		else:
+			time.sleep(random.randint(1,2))
+			return arrPosAntiga
+	elif mAmbiente[arrPosAtual[0]][arrPosAtual[1]] not in ['[P]','[*]']:
 		mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
 		mAmbiente[arrPosAtual[0]][arrPosAtual[1]] = '[*]'
 		imprimirMatriz()
 		time.sleep(random.randint(1,2))
 		return arrPosAtual
+	elif mAmbiente[arrPosAtual[0]][arrPosAtual[1]] == '[*]':
+		arrNovaPosAtual = []
+		andou = False
+		while(not andou):
+			ranInt = random.choice([1,2,3,4])
+			if ranInt == 1 and arrPosAntiga[0]-1 >= 0 and mAmbiente[arrPosAntiga[0]-1][arrPosAntiga[1]] not in ['[*]', '[P]']:
+				arrNovaPosAtual = [arrPosAntiga[0]-1,arrPosAntiga[1]]
+				mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+				mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+				imprimirMatriz()
+				andou = True
+			elif ranInt == 2 and arrPosAntiga[0]+1 <= len(mAmbiente[0])-1 and mAmbiente[arrPosAntiga[0]+1][arrPosAntiga[1]] not in ['[*]', '[P]']:
+				arrNovaPosAtual = [arrPosAntiga[0]+1,arrPosAntiga[1]]
+				mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+				mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+				imprimirMatriz()
+				andou = True
+			elif ranInt == 3 and arrPosAntiga[1]-1 >= 0 and mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]-1] not in ['[*]', '[P]']:
+				arrNovaPosAtual = [arrPosAntiga[0],arrPosAntiga[1]-1]
+				mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+				mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+				imprimirMatriz()
+				andou = True
+			elif ranInt == 4 and arrPosAntiga[1]+1 <= len(mAmbiente[0][0])-1 and mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]+1] not in ['[*]', '[P]']:
+				arrNovaPosAtual = [arrPosAntiga[0],arrPosAntiga[1]+1]
+				mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+				mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+				imprimirMatriz()
+				andou = True
+			# elif ranInt == 1 and arrPosAntiga[0]-2 >= 0 and mAmbiente[arrPosAntiga[0]-2][arrPosAntiga[1]] not in ['[*]', '[P]']:
+			# 	arrNovaPosAtual = [arrPosAntiga[0]-2,arrPosAntiga[1]]
+			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+			# 	imprimirMatriz()
+			# 	andou = True
+			# elif ranInt == 2 and arrPosAntiga[1]-2 >= 0 and mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]-2] not in ['[*]', '[P]']:
+			# 	arrNovaPosAtual = [arrPosAntiga[0],arrPosAntiga[1]-2]
+			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+			# 	imprimirMatriz()
+			# 	andou = True
+			# elif ranInt == 3 and arrPosAntiga[0]+2 <= len(mAmbiente[0])-1 and mAmbiente[arrPosAntiga[0]+2][arrPosAntiga[1]] not in ['[*]', '[P]']:
+			# 	arrNovaPosAtual = [arrPosAntiga[0]+2,arrPosAntiga[1]]
+			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+			# 	imprimirMatriz()
+			# 	andou = True
+			# elif ranInt == 4 and arrPosAntiga[1]+2 <= len(mAmbiente[0][0])-1 and mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]+2] not in ['[*]', '[P]']:
+			# 	arrNovaPosAtual = [arrPosAntiga[0],arrPosAntiga[1]+2]
+			# 	mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+			# 	mAmbiente[arrNovaPosAtual[0]][arrNovaPosAtual[1]] = '[*]'
+			# 	imprimirMatriz()
+			# 	andou = True
+		return arrNovaPosAtual
 	else:
-		time.sleep(random.randint(1,2))
-		return arrPosAntiga
+		mAmbiente[arrPosAntiga[0]][arrPosAntiga[1]] = '[ ]'
+		imprimirMatriz()
+		return arrPortaPessoa
 
 def imprimirMatriz():
 	global timer
@@ -75,11 +140,12 @@ def imprimirMatriz():
 		time.sleep(0.5)
 	timer = True
 	os.system('cls') or None
-	for l in mAmbiente:	
+	for l in mAmbiente:
 	    for v in l:
 	        print(" "+v+" ", end="")
 	    print()
 	timer = False
+	print('Threads: {}'.format(threading.active_count()-1))
 
 def escolherPorta():
 	return random.choice(arrPortas)

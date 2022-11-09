@@ -38,23 +38,22 @@ def andarPessoaPorta(p):
 	while(p[1] != p[2]):
 		# igualar o x da pessoa ao da porta
 		if p[1][0] != p[2][0]:
-			if p[1][0] > p[2][0]
+			if p[1][0] > p[2][0]:
 				PosAntiga = p[1]
 				PosAtual = [p[1][0]-1,p[1][1]]
-				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual, p[2])
 			else:
 				PosAntiga = p[1]
 				PosAtual = [p[1][0]+1,p[1][1]]
-				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual, p[2])
 		# igualar o y da pessoa ao da porta
 		else:
-			if p[1][1] > p[2][1]
+			if p[1][1] > p[2][1]:
 				PosAntiga = p[1]
 				PosAtual = [p[1][0],p[1][1]-1]
-				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual, p[2])
 			else:
 				PosAntiga = p[1]
 				PosAtual = [p[1][0],p[1][1]+1]
-				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual)
-	
-	print('andou porta, %s' % (p[0]))
+				p[1] = amb.alterarAmbiente(PosAntiga, PosAtual, p[2])
+	amb.arrPessoas.remove(p)

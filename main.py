@@ -17,8 +17,8 @@ import pessoa as p
 
 amb.larguraAmbiente = 10
 amb.comprimentoAmbiente = 10
-amb.nPortas = 5
-amb.nPessoas = 5
+amb.nPortas = 1
+amb.nPessoas = 15
 
 amb.mAmbiente = amb.preencherAmbiente()
 
@@ -28,8 +28,6 @@ amb.mAmbiente, amb.arrPortas = amb.preencherAmbientePortas()
 
 amb.mAmbiente, amb.arrPessoas = amb.preencherAmbientePessoas()
 
-# p.criarPessoa([])
-
 for arrPessoa in amb.arrPessoas:
 	thread = threading.Thread(target=p.criarPessoa, args=(arrPessoa,), daemon=True)
 	thread.start()
@@ -37,9 +35,11 @@ for arrPessoa in amb.arrPessoas:
 # while(not keyboard.read_key() == 'enter'):
 	# time.sleep(0.1)
 
-time.sleep(7)
+time.sleep(1)
 
 p.timer = False
 
-while(True):
-	time.sleep(3)
+while(len(amb.arrPessoas) > 0):
+	time.sleep(0.1)
+amb.imprimirMatriz()
+print('Terminou!')
